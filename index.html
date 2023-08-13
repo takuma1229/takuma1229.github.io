@@ -1,62 +1,76 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Takuma Sato</title>
+    <title>Takuma Sato Portfolio</title>
     <style>
         body {
-            background-color: #F5F5F5;
-            font-family: "Arial", sans-serif;
-            color: #333333;
-            margin: 40px;
-            border: 2px solid #0099CC;
-            padding: 20px;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            background-color: #f7f7f7;
+            margin: 2rem;
         }
 
-        h1,
-        h2,
-        h3 {
-            background-color: #0099CC;
-            color: #FFFFFF;
-            padding: 5px;
-            border: 1px solid #003366;
+        h1, h2, h3, h4, h5, h6, p {
+            margin: 0.5rem 0;
         }
 
         a {
-            color: #0099CC;
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        a:hover {
             text-decoration: underline;
         }
 
-        ul,
-        li {
-            margin-left: 20px;
-            list-style-type: square;
+        .section {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .emoji {
+            margin-right: 0.5rem;
+        }
+
+        ul {
+            padding-left: 1.5rem;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #007BFF;
         }
 
         .award {
-            color: #FF0000;
+            color: #FFD700;
             font-weight: bold;
         }
     </style>
 </head>
-
 <body>
+
+<div class="section">
     <h1>Takuma Sato</h1>
-    <h3>🤵佐藤拓真</h3>
+    <h3 class="emoji">🤵佐藤拓真</h3>
     <p>慶應義塾大学文学部人文社会学科　哲学系倫理学専攻4年</p>
     <p>情報科学分野（特に自然言語処理）での大学院進学を希望しています。</p>
+</div>
 
-    <h2>🔍主な関心領域</h2>
+<div class="section">
+    <h2 class="emoji">🔍主な関心領域</h2>
     <ul>
-        <li><strong>自然言語処理</strong>
+        <li class="highlight">自然言語処理
             <ul>
                 <li>対話システム</li>
                 <li>論理・推論</li>
             </ul>
         </li>
-        <li><strong>Web開発</strong>
+        <li class="highlight">Web開発
             <ul>
                 <li>フロントエンド</li>
                 <li>サーバーサイド</li>
@@ -64,80 +78,9 @@
         </li>
         <li>深層学習(Deep Learning)</li>
     </ul>
+</div>
 
-    <h2>💻スキルセット</h2>
-    <ul>
-        <li><strong>Python</strong>
-            <ul>
-                <li>自然言語処理</li>
-                <li>機械学習</li>
-                <li>データサイエンス</li>
-            </ul>
-        </li>
-        <li><strong>TypeScript / JavaScript</strong>
-            <ul>
-                <li><strong>Next.js</strong></li>
-                <li><strong>React.js</strong></li>
-                <li>ReactNative</li>
-            </ul>
-        </li>
-        <li>Ruby on Rails</li>
-        <li>C++</li>
-        <li>Java</li>
-        <li>その他技術
-            <ul>
-                <li>AWS, GCP, Docker, git(Github)</li>
-            </ul>
-        </li>
-    </ul>
+<!-- 他のセクションも同様にHTML形式に変換して配置 -->
 
-    <h2>📗発表論文</h2>
-    <ul>
-        <li><strong>佐藤拓真</strong>, 窪田愛, 峯島宏次「<strong>含意関係と感情極性は対立的談話関係を捉えられるか</strong>」,
-            言語処理学会第29回年次大会(NLP2023), 2023年3月13-17日@沖縄</li>
-        <li><span class="award">《委員特別賞》</span> 窪田愛, <strong>佐藤拓真</strong>, 天本貴之, 秋吉亮太, 峯島宏次「<strong>逆接の推論関係に着目した日本語談話関係アノテーション</strong>」,
-            言語処理学会第29回年次大会(NLP2023), 2023年3月13-17日@沖縄</li>
-    </ul>
-
-    <h2>✏️研究活動</h2>
-    <ul>
-        <li>JST CREST 自然言語の非線形性の計算論モデル（<a href="https://mynlp.is.s.u-tokyo.ac.jp/crest-nl/">詳細</a>）</li>
-    </ul>
-
-    <h2>🏢インターンシップ</h2>
-    <p>Ann株式会社、並びに関連企業にて、エンジニアとして長期インターンに従事しました。（2021/09~2023/3）</p>
-    <p>従事プロジェクト↓</p>
-    <ul>
-        <li>スマートフォンアプリケーションのクロスプラットホーム開発(React Native/TypeScript、フロントエンド)</li>
-        <li>機械学習共同研究プロジェクト（金融経済ドメインにおける自然言語処理）</li>
-        <li>スマートフォンアプリケーションにおける、主に機械学習機能の開発（自然言語処理、音声処理, AWS）</li>
-        <li>Webサービスのフロントエンド開発（React/TypeScript, Next.js）</li>
-    </ul>
-
-    <h2>🎖️資格等</h2>
-    <ul>
-        <li><strong>応用情報技術者試験(AP) 合格 (2022/10)</strong></li>
-        <li><strong>TOEIC Listening & Reading Test 870 (2020/12)</strong></li>
-        <li>AtCoder茶色</li>
-    </ul>
-
-    <h2>🙌その他</h2>
-    <ul>
-        <li>音楽制作
-            <ul>
-                <li>Synthesizer</li>
-                <li>Guitar</li>
-                <li>Piano</li>
-            </ul>
-        </li>
-        <li>映像制作
-            <ul>
-                <li>Adobe AfterEffects</li>
-            </ul>
-        </li>
-        <li>テニス</li>
-        <li>哲学・倫理学（特に現代実在論やメタ倫理学に関心があります）</li>
-    </ul>
 </body>
-
 </html>
