@@ -55,6 +55,20 @@
               0px 1px 0 #FFF,  0-1px 0 #FFF,
               -1px 0 0 #FFF, 1px 0 0 #FFF;
         }
+
+         .link-container {
+            display: flex;
+            gap: 20px;  /* 2つのアイテムの間のスペース */
+        }
+
+        .link-container a {
+            text-decoration: none;
+            color: inherit; /* リンクの色をデフォルトの文字色に設定 */
+        }
+
+        .link-container a:hover {
+            color: blue; /* リンクの色をホバー時に変更 */
+        }
     </style>
 </head>
 <body>
@@ -66,9 +80,8 @@
     <p>(2024年度から、奈良先端科学技術大学院大学(NAIST)情報科学領域修士課程に進学予定)</p>
     <br></br>
     <a href="https://twitter.com/dummy_username" target="_blank" rel="noopener noreferrer">
-    <i class="fab fa-twitter"></i> Twitter
+        <i class="fab fa-twitter"></i> Twitter
     </a>
-    <br>
     <a href="https://github.com/dummy_username" target="_blank" rel="noopener noreferrer">
         <i class="fab fa-github"></i> Github
     </a>
