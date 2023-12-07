@@ -36,10 +36,12 @@ li {
 }
 
 .section {
-  margin-bottom: 2rem;
   padding: 1rem;
   background-color: #ffffff;
   border-radius: 5px;
+  margin : 0 auto;
+  margin-bottom: 2rem;
+  max-width: 70%;
 }
 
 .emoji {
