@@ -48,8 +48,6 @@ li {
   margin-right: 0.5rem;
 }
 
-
-
 .highlight {
   font-weight: bold;
   color: black;
@@ -60,8 +58,6 @@ li {
   vertical-align: center;
   /* padding: 100px 0px; */
 }
-
-
 
 .job {
   padding: 10px 7px;
@@ -84,6 +80,7 @@ li {
 .red-text {
   color: red;
 }
+
 .link-container {
   display: flex;
   gap: 20px;  /* 2つのアイテムの間のスペース */
