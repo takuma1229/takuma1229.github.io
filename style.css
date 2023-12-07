@@ -21,6 +21,10 @@ li {
   margin: 0.5rem 0;
 }
 
+h2 {
+  text-align: center;
+}
+
 .top {
   text-align: center;
 }
@@ -93,4 +97,18 @@ li {
 
 .link-container a:hover {
   color: blue; /* リンクの色をホバー時に変更 */
+}
+
+@media screen and (max-width: 959px) {
+	/* タブレット */
+  .section {
+    max-width: 70%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+	/* スマホ */
+  .section {
+    max-width: 90%;
+  }
 }
