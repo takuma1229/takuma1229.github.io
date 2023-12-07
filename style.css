@@ -1,0 +1,97 @@
+body {
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  background-color: #545454;
+  margin: 2rem;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0.5rem 0;
+}
+
+a {
+  color: "black";
+}
+
+a:hover {
+  color: "blue";
+}
+
+li {
+  margin: 0.5rem 0;
+}
+
+.top {
+  text-align: center;
+}
+
+.links{
+  margin-top: 1rem;
+}
+
+.sns {
+  color: #262626;
+  font-size: 30px;
+  margin-right: 10px;
+}
+
+.section {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background-color: #ffffff;
+  border-radius: 5px;
+}
+
+.emoji {
+  margin-right: 0.5rem;
+}
+
+
+
+.highlight {
+  font-weight: bold;
+  color: black;
+}
+
+.language{
+  font-size: 1rem;
+  vertical-align: center;
+  /* padding: 100px 0px; */
+}
+
+
+
+.job {
+  padding: 10px 7px;
+}
+
+.company {
+  padding: 10px 7px;
+  border: 3px dotted gray;
+  border-radius: 10px;
+  font-size: 1.3rem;
+}
+
+.award {
+   color: red;
+    text-shadow:1px 1px 0 #FFF, -1px -1px 0 #FFF,
+    -1px 1px 0 #FFF, 1px -1px 0 #FFF,
+    0px 1px 0 #FFF,  0-1px 0 #FFF,
+    -1px 0 0 #FFF, 1px 0 0 #FFF;
+}
+.red-text {
+  color: red;
+}
+.link-container {
+  display: flex;
+  gap: 20px;  /* 2つのアイテムの間のスペース */
+}
+
+.link-container a {
+  text-decoration: none;
+  color: inherit; /* リンクの色をデフォルトの文字色に設定 */
+}
+
+.link-container a:hover {
+  color: blue; /* リンクの色をホバー時に変更 */
+}
