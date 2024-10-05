@@ -1,8 +1,11 @@
 body {
   font-family: 'Arial', sans-serif;
   color: #333;
-  background-color: #545454;
-  margin: 2rem;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -10,11 +13,12 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 a {
-  color: "black";
+  color: #007acc;
+  text-decoration: none;
 }
 
 a:hover {
-  color: "blue";
+  color: #005f99;
 }
 
 li {
@@ -23,113 +27,131 @@ li {
 
 h2 {
   text-align: center;
+  margin-top: 1rem;
 }
 
 table {
-  border: black 1px solid;
+  border: 1px solid #ddd;
   border-radius: 5px;
-  width : 90%;
-  border-collapse: collapse
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 thead {
-  background-color: #f2f2f2;
-}
-
-.period, .degree {
-  width: 20%;
+  background-color: #f0f0f0;
 }
 
 th, td {
-  border: 1px solid gray;
-  padding: 3px; 
-  text-align: center;
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
 }
 
 .top {
   text-align: center;
+  background-color: #ffffff;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
 }
 
-.links{
+.links {
   margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
 }
 
 .sns {
-  color: #262626;
+  color: #007acc;
   font-size: 30px;
-  margin-right: 10px;
+  transition: color 0.3s;
+}
+
+.sns:hover {
+  color: #005f99;
+}
+
+.degree {
+  width: 30%;
 }
 
 .section {
-  padding: 1rem;
+  padding: 2rem;
   background-color: #ffffff;
-  border-radius: 5px;
-  margin : 0 auto;
-  margin-bottom: 2rem;
-  max-width: 50%;
-}
-
-
-.emoji {
-  margin-right: 0.5rem;
+  border-radius: 10px;
+  margin: 1rem auto;
+  max-width: 800px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .highlight {
   font-weight: bold;
-  color: black;
+  color: #333;
 }
 
-.language{
-  font-size: 1rem;
-  vertical-align: center;
-}
-
-.job {
+.job, .company {
   padding: 10px 7px;
 }
 
 .company {
-  padding: 10px 7px;
-  border: 3px dotted gray;
-  border-radius: 10px;
-  font-size: 1.3rem;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  margin-top: 1rem;
+  background-color: #f9f9f9;
 }
 
 .award {
-   color: red;
-    text-shadow:1px 1px 0 #FFF, -1px -1px 0 #FFF,
-    -1px 1px 0 #FFF, 1px -1px 0 #FFF,
-    0px 1px 0 #FFF,  0-1px 0 #FFF,
-    -1px 0 0 #FFF, 1px 0 0 #FFF;
-}
-.red-text {
   color: red;
+  text-shadow: 1px 1px 0 #fff;
 }
 
 .link-container {
   display: flex;
-  gap: 20px;  /* 2つのアイテムの間のスペース */
+  justify-content: center;
+  gap: 20px;
 }
 
 .link-container a {
-  text-decoration: none;
-  color: inherit; /* リンクの色をデフォルトの文字色に設定 */
+  color: #333;
 }
 
 .link-container a:hover {
-  color: blue; /* リンクの色をホバー時に変更 */
+  color: #007acc;
 }
 
 @media screen and (max-width: 959px) {
-	/* タブレット */
   .section {
-    max-width: 70%;
+      max-width: 600px;
   }
 }
 
 @media screen and (max-width: 500px) {
-	/* スマホ */
+  html, body {
+    width: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+      font-size: 0.8rem;
+  }
   .section {
-    max-width: 90%;
+      max-width: 90%;
+      padding: 1rem;
+  }
+  table {
+      width: 100%;
+      font-size: 0.8rem;
+  }
+  .links {
+      flex-direction: row;
+      gap: 10px;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: nowrap;
   }
 }
