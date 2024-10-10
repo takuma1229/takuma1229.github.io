@@ -57,6 +57,18 @@ th, td {
   margin-bottom: 2rem;
 }
 
+.affiliation {
+  /* このdivを中央に配置 */
+  margin: 0 auto;
+  font-weight: bold;
+  max-width: 500px;
+  text-align: left;
+}
+
+.affiliation-list {
+  padding: 0 0 !important;
+}
+
 .links {
   margin-top: 1rem;
   display: flex;
@@ -127,6 +139,7 @@ th, td {
   .section {
       max-width: 600px;
   }
+  
 }
 
 @media screen and (max-width: 500px) {
@@ -154,4 +167,7 @@ th, td {
       align-items: center;
       flex-wrap: nowrap;
   }
+  .affiliation {
+    max-width: 300px;
+}
 }
