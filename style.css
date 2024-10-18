@@ -87,7 +87,11 @@ th, td {
 }
 
 .degree {
-  width: 30%;
+  width: 15%;
+}
+
+.supervisor {
+  width: 20%
 }
 
 .section {
