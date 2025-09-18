@@ -509,6 +509,87 @@ td {
   font-size: 1.5rem;
 }
 
+/* Cursor trail */
+.cursor-trail {
+  --cursor-scale: 1;
+  position: fixed;
+  top: var(--cursor-y, 50vh);
+  left: var(--cursor-x, 50vw);
+  width: 200px;
+  height: 200px;
+  margin-top: -100px;
+  margin-left: -100px;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(var(--cursor-scale));
+  transform-origin: center;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+  will-change: transform, opacity;
+}
+
+.cursor-trail__glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.55) 0%, rgba(6, 182, 212, 0.24) 45%, rgba(15, 23, 42, 0) 75%);
+  filter: blur(28px);
+  opacity: 0.8;
+  mix-blend-mode: screen;
+}
+
+.cursor-trail__core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.95) 0%, rgba(6, 182, 212, 0.85) 60%, rgba(255, 255, 255, 0.9) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 20px rgba(79, 70, 229, 0.55);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+  mix-blend-mode: normal;
+}
+
+.cursor-trail.is-visible {
+  opacity: 1;
+}
+
+.cursor-trail.is-interactive .cursor-trail__core {
+  box-shadow: 0 0 26px rgba(6, 182, 212, 0.55), 0 0 12px rgba(236, 254, 255, 0.4);
+  background: linear-gradient(135deg, rgba(6, 182, 212, 1) 0%, rgba(16, 185, 129, 0.95) 55%, rgba(255, 255, 255, 0.95) 100%);
+}
+
+.cursor-trail.is-pressed .cursor-trail__core {
+  transform: translate(-50%, -50%) scale(0.75);
+  box-shadow: 0 0 18px rgba(30, 64, 175, 0.6);
+}
+
+.has-custom-cursor body,
+.has-custom-cursor a,
+.has-custom-cursor button,
+.has-custom-cursor .social-link,
+.has-custom-cursor .language,
+.has-custom-cursor [role="button"],
+.has-custom-cursor summary {
+  cursor: none;
+}
+
+.has-custom-cursor input,
+.has-custom-cursor textarea,
+.has-custom-cursor select,
+.has-custom-cursor .no-custom-cursor {
+  cursor: auto;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .cursor-trail {
+    display: none;
+  }
+}
+
 /* Responsive Design */
 @media screen and (max-width: 959px) {
   .section {
