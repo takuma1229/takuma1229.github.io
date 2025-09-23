@@ -6,16 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Takuma's Cyber Room</title>
     <link rel="stylesheet" href="style.css" type="text/css">
+    <script src="gas-config.js" defer></script>
+    <script defer src="retro-interactions.js"></script>
 </head>
 <body>
+<div class="outer-shell">
 <div class="page">
     <div class="retro-header">
         <h1>佐藤 拓真</h1>
         <span class="subtitle">☆ Takuma's Cyber Room ☆</span>
     </div>
 
+    <div class="nostalgia-tools">
+        <div class="counter-box">
+            <h3>アクセスカウンター</h3>
+            <div class="counter-display"><span id="visit-count">000000</span> 人目のご訪問です！</div>
+        </div>
+    </div>
+
     <div class="banner-note">
-        <marquee behavior="scroll" direction="left" scrollamount="4">★ ご訪問ありがとうございます！最終更新日: 2025年9月23日 ｜ 好きなだけゆっくりしていってくださいね ★</marquee>
+        <marquee behavior="scroll" direction="left" scrollamount="4"><span class="marquee-text">★ ご訪問ありがとうございます！最終更新日: 2025年9月23日 ｜ 好きなだけゆっくりしていってくださいね ★</span></marquee>
     </div>
 
     <div class="top">
@@ -208,9 +218,32 @@
         </ul>
     </div>
 
+    <div class="section community">
+        <h2>🌟 ゲストコーナー</h2>
+        <div class="clap-box">
+            <h3>拍手ボタン</h3>
+            <p>応援ありがとうございます！<br>気に入っていただけたらポチッとどうぞ～。</p>
+            <button type="button" class="clap-button" id="clap-button">👏 拍手する</button>
+            <div class="clap-count">拍手総数: <span id="clap-count">0</span></div>
+        </div>
+
+        <div class="bbs-box">
+            <h3>掲示板</h3>
+            <p class="bbs-note">ひとこと残してください！</p>
+            <form id="bbs-form" class="bbs-form">
+                <label>お名前:<br><input type="text" name="name" maxlength="24" placeholder="匿名さん"></label>
+                <label>メッセージ:<br><textarea name="message" rows="3" maxlength="160" placeholder="こんにちは！"></textarea></label>
+                <button type="submit">書き込み送信</button>
+            </form>
+            <ul class="bbs-list" id="bbs-list"></ul>
+        </div>
+    </div>
+
     <div class="footer">
         Thanks for visiting my homepage! | Guestbook準備中 | Mail me anytime ✉
     </div>
+</div>
+<div class="outer-shell__footnote" aria-hidden="true"></div>
 </div>
 </body>
 </html>

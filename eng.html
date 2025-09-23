@@ -6,16 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Takuma's Cyber Room</title>
     <link rel="stylesheet" href="style.css" type="text/css">
+    <script src="gas-config.js" defer></script>
+    <script defer src="retro-interactions.js"></script>
 </head>
 <body>
+<div class="outer-shell">
 <div class="page">
     <div class="retro-header">
         <h1>Takuma Sato</h1>
         <span class="subtitle">☆ Welcome to Takuma's Cyber Room ☆</span>
     </div>
 
+    <div class="nostalgia-tools">
+        <div class="counter-box">
+            <h3>Visitor Counter</h3>
+            <div class="counter-display"><span id="visit-count">000000</span> visits recorded!</div>
+        </div>
+    </div>
+
     <div class="banner-note">
-        <marquee behavior="scroll" direction="left" scrollamount="4">★ Thank you for stopping by! Last updated: September 23, 2025 ｜ Feel free to browse around ★</marquee>
+        <marquee behavior="scroll" direction="left" scrollamount="4"><span class="marquee-text">★ Thank you for stopping by! Last updated: September 23, 2025 ｜ Feel free to browse around ★</span></marquee>
     </div>
 
     <div class="top">
@@ -208,9 +218,32 @@
         </ul>
     </div>
 
+    <div class="section community">
+        <h2>🌟 Community Corner</h2>
+        <div class="clap-box">
+            <h3>Cheer Button</h3>
+            <p>Thanks for dropping by!<br>If you like the page, hit the button.</p>
+            <button type="button" class="clap-button" id="clap-button">👏 Send Cheers</button>
+            <div class="clap-count">Total cheers: <span id="clap-count">0</span></div>
+        </div>
+
+        <div class="bbs-box">
+            <h3>Mini Bulletin Board</h3>
+            <p class="bbs-note">Leave me a note!</p>
+            <form id="bbs-form" class="bbs-form">
+                <label>Name:<br><input type="text" name="name" maxlength="24" placeholder="Anonymous"></label>
+                <label>Message:<br><textarea name="message" rows="3" maxlength="160" placeholder="Hello there!"></textarea></label>
+                <button type="submit">Post Message</button>
+            </form>
+            <ul class="bbs-list" id="bbs-list"></ul>
+        </div>
+    </div>
+
     <div class="footer">
         Thanks for visiting my homepage! | Guestbook coming soon | Drop me a line ✉
     </div>
+</div>
+<div class="outer-shell__footnote" aria-hidden="true"></div>
 </div>
 </body>
 </html>
