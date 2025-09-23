@@ -4,7 +4,9 @@
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const pointerFine = window.matchMedia('(pointer: fine)');
   const hoverCapable = window.matchMedia('(hover: hover)');
+
   const INTERACTIVE_SELECTOR = 'a, button, [role="button"], summary, input:not([type="hidden"]), textarea, select, .social-link, .language';
+  const FORM_CONTROL_TAGS = new Set(['INPUT', 'TEXTAREA', 'SELECT']);
 
   const canEnable = () => !prefersReducedMotion.matches && pointerFine.matches && hoverCapable.matches;
 
@@ -19,11 +21,28 @@
     const glow = document.createElement('div');
     glow.className = 'cursor-trail__glow';
 
-    const core = document.createElement('div');
-    core.className = 'cursor-trail__core';
+    const face = document.createElement('div');
+    face.className = 'cursor-trail__face';
 
-    cursor.appendChild(glow);
-    cursor.appendChild(core);
+    const hat = document.createElement('div');
+    hat.className = 'cursor-trail__hat';
+    const hatBrim = document.createElement('div');
+    hatBrim.className = 'cursor-trail__hat-brim';
+    hat.appendChild(hatBrim);
+
+    const eyeLeft = document.createElement('div');
+    eyeLeft.className = 'cursor-trail__eye cursor-trail__eye--left';
+    const eyeRight = document.createElement('div');
+    eyeRight.className = 'cursor-trail__eye cursor-trail__eye--right';
+
+    const mouth = document.createElement('div');
+    mouth.className = 'cursor-trail__mouth';
+
+    const moustache = document.createElement('div');
+    moustache.className = 'cursor-trail__moustache';
+
+    face.append(hat, eyeLeft, eyeRight, mouth, moustache);
+    cursor.append(glow, face);
     document.body.appendChild(cursor);
     document.documentElement.classList.add('has-custom-cursor');
 
@@ -31,21 +50,50 @@
     let targetY = window.innerHeight / 2;
     let currentX = targetX;
     let currentY = targetY;
+    let lastX = currentX;
+    let lastY = currentY;
+
     let targetScale = 1;
     let currentScale = 1;
+
+    let targetTilt = 0;
+    let currentTilt = 0;
+
+    let targetBounce = 0;
+    let currentBounce = 0;
+
+    let targetLookX = 0;
+    let targetLookY = 0;
+    let currentLookX = 0;
+    let currentLookY = 0;
+
     let animationFrameId = 0;
     let isVisible = false;
     let isPressed = false;
     let isInteractive = false;
+    let isReading = false;
+    let giggleTimeout = 0;
 
     const applyTransform = () => {
       cursor.style.setProperty('--cursor-x', `${currentX}px`);
       cursor.style.setProperty('--cursor-y', `${currentY}px`);
       cursor.style.setProperty('--cursor-scale', currentScale.toFixed(3));
+      cursor.style.setProperty('--cursor-tilt', `${currentTilt.toFixed(2)}deg`);
+      cursor.style.setProperty('--cursor-bounce', `${currentBounce.toFixed(2)}px`);
+      cursor.style.setProperty('--cursor-look-x', `${currentLookX.toFixed(2)}px`);
+      cursor.style.setProperty('--cursor-look-y', `${currentLookY.toFixed(2)}px`);
     };
 
     const updateScaleForState = () => {
-      targetScale = isPressed ? (isInteractive ? 0.88 : 0.82) : (isInteractive ? 1.25 : 1.0);
+      if (isInteractive && isPressed) {
+        targetScale = 1.05;
+      } else if (isInteractive) {
+        targetScale = 1.2;
+      } else if (isPressed) {
+        targetScale = 0.88;
+      } else {
+        targetScale = 1;
+      }
     };
 
     const show = () => {
@@ -62,11 +110,45 @@
       }
     };
 
+    const triggerGiggle = (duration = 420) => {
+      cursor.classList.add('is-giggling');
+      window.clearTimeout(giggleTimeout);
+      giggleTimeout = window.setTimeout(() => {
+        cursor.classList.remove('is-giggling');
+      }, duration);
+    };
+
     const animate = () => {
-      currentX += (targetX - currentX) * 0.2;
-      currentY += (targetY - currentY) * 0.2;
+      const dx = targetX - currentX;
+      const dy = targetY - currentY;
+
+      currentX += dx * 0.2;
+      currentY += dy * 0.2;
+
+      const velocityX = currentX - lastX;
+      const velocityY = currentY - lastY;
+      const speed = Math.hypot(velocityX, velocityY);
+
       currentScale += (targetScale - currentScale) * 0.2;
+
+      targetTilt = Math.max(Math.min(velocityX * 14, 18), -18);
+      currentTilt += (targetTilt - currentTilt) * 0.18;
+
+      targetBounce = Math.max(Math.min(velocityY * -18, 16), -16);
+      currentBounce += (targetBounce - currentBounce) * 0.22;
+
+      targetLookX = Math.max(Math.min(velocityX * 16, 12), -12);
+      targetLookY = Math.max(Math.min(velocityY * -14, 10), -10);
+      currentLookX += (targetLookX - currentLookX) * 0.22;
+      currentLookY += (targetLookY - currentLookY) * 0.22;
+
+      cursor.classList.toggle('is-moving', speed > 0.45);
+
       applyTransform();
+
+      lastX = currentX;
+      lastY = currentY;
+
       animationFrameId = window.requestAnimationFrame(animate);
     };
 
@@ -79,12 +161,20 @@
       targetY = event.clientY;
 
       const interactiveTarget = event.target.closest?.(INTERACTIVE_SELECTOR);
-      const wasInteractive = isInteractive;
-      isInteractive = Boolean(interactiveTarget);
+      const nextIsInteractive = Boolean(interactiveTarget);
+      const nextIsReading = interactiveTarget ? FORM_CONTROL_TAGS.has(interactiveTarget.tagName) : false;
 
-      if (isInteractive !== wasInteractive) {
+      if (nextIsInteractive !== isInteractive) {
+        isInteractive = nextIsInteractive;
         cursor.classList.toggle('is-interactive', isInteractive);
-        updateScaleForState();
+        if (isInteractive) {
+          triggerGiggle();
+        }
+      }
+
+      if (nextIsReading !== isReading) {
+        isReading = nextIsReading;
+        cursor.classList.toggle('is-reading', isReading);
       }
 
       updateScaleForState();
@@ -98,8 +188,10 @@
       if (event.relatedTarget) {
         return;
       }
+      window.clearTimeout(giggleTimeout);
       isInteractive = false;
-      cursor.classList.remove('is-interactive');
+      isReading = false;
+      cursor.classList.remove('is-interactive', 'is-reading', 'is-giggling', 'is-moving');
       updateScaleForState();
       hide();
     };
@@ -110,6 +202,9 @@
       }
       isPressed = true;
       cursor.classList.add('is-pressed');
+      if (!isInteractive) {
+        triggerGiggle(360);
+      }
       updateScaleForState();
     };
 
@@ -122,24 +217,24 @@
       updateScaleForState();
     };
 
+    const resetStates = () => {
+      window.clearTimeout(giggleTimeout);
+      isPressed = false;
+      isInteractive = false;
+      isReading = false;
+      cursor.classList.remove('is-pressed', 'is-interactive', 'is-reading', 'is-giggling', 'is-moving');
+      updateScaleForState();
+      hide();
+    };
+
     const handleVisibilityChange = () => {
       if (document.visibilityState === 'hidden') {
-        isPressed = false;
-        isInteractive = false;
-        cursor.classList.remove('is-pressed');
-        cursor.classList.remove('is-interactive');
-        updateScaleForState();
-        hide();
+        resetStates();
       }
     };
 
     const handleWindowBlur = () => {
-      isPressed = false;
-      isInteractive = false;
-      cursor.classList.remove('is-pressed');
-      cursor.classList.remove('is-interactive');
-      updateScaleForState();
-      hide();
+      resetStates();
     };
 
     document.addEventListener('pointermove', handlePointerMove);
@@ -156,6 +251,7 @@
 
     disposeCursor = () => {
       window.cancelAnimationFrame(animationFrameId);
+      window.clearTimeout(giggleTimeout);
       document.removeEventListener('pointermove', handlePointerMove);
       document.removeEventListener('pointerdown', handlePointerDown);
       document.removeEventListener('pointerup', handlePointerUp);

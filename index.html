@@ -1,246 +1,216 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-     <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <title>Takuma's Cyber Room</title>
     <link rel="stylesheet" href="style.css" type="text/css">
-    <script type="importmap">
-    {
-        "imports": {
-            "three": "https://cdn.jsdelivr.net/npm/three@0.162.0/build/three.module.js",
-            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.162.0/examples/jsm/"
-        }
-    }
-    </script>
-    <title>Takuma Sato Portfolio</title>
 </head>
 <body>
+<div class="page">
+    <div class="retro-header">
+        <h1>佐藤 拓真</h1>
+        <span class="subtitle">☆ Takuma's Cyber Room ☆</span>
+    </div>
 
-<div class="hero">
-    <canvas id="hero-canvas"></canvas>
+    <div class="banner-note">
+        <marquee behavior="scroll" direction="left" scrollamount="4">★ ご訪問ありがとうございます！最終更新日: 2025年9月23日 ｜ 好きなだけゆっくりしていってくださいね ★</marquee>
+    </div>
+
     <div class="top">
-    <h1>佐藤 拓真</h1>
-    <strong>E-mail: sato.takuma.sq6@naist.ac.jp</strong>
-    <div class="affiliation">
-        <ul style="list-style: none;" class="affiliation-list">
+        <strong>E-mail: sato.takuma.sq6@naist.ac.jp</strong>
+        <ul class="affiliation-list">
             <li>修士2年 @ NAIST / 理研GRP 吉野研 (ロボット対話知能研究室)</li>
             <li>RA @ NII (国立情報学研究所) 菅原研</li>
         </ul>
+        <a class="language" href="./eng.html">(English Page)</a>
+        <div class="links">
+            <a class="link-badge" href="https://docs.google.com/document/d/17w2khlo6ce6p-Vd8LsHR45q7RQzJCnoo/edit?usp=sharing&ouid=108523150267365259612&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer">CV</a>
+            <a class="link-badge" href="https://twitter.com/takumasato_2000" target="_blank" rel="noopener noreferrer">Twitter</a>
+            <a class="link-badge" href="https://github.com/takuma1229" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
     </div>
-    <a class="language" href="./eng.html">(English Page)</a>
-    <div class="links">
-        <a class="social-link" href="https://docs.google.com/document/d/17w2khlo6ce6p-Vd8LsHR45q7RQzJCnoo/edit?usp=sharing&ouid=108523150267365259612&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer">
-            <i class="fas fa-file-pdf sns"></i>
-            <span class="social-label">CV</span>
-        </a>
-        <a class="social-link" href="https://twitter.com/takumasato_2000" target="_blank" rel="noopener noreferrer">
-            <i class="fab fa-twitter sns"></i>
-            <span class="social-label">Twitter</span>
-        </a>
-        <a class="social-link" href="https://github.com/takuma1229" target="_blank" rel="noopener noreferrer">
-            <i class="fab fa-github sns"></i>
-            <span class="social-label">GitHub</span>
-        </a>
+
+    <div class="section">
+        <h2>🏫 経歴</h2>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col" class="period">期間</th>
+                        <th scope="col">所属</th>
+                        <th scope="col" class="degree">取得学位</th>
+                        <th scope="col" class="supervisor">指導教官</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2019/04 ~ 2024/03</td>
+                        <td>慶應義塾大学文学部人文社会学科 哲学系倫理学専攻</td>
+                        <td>学士 (哲学)</td>
+                        <td>柘植尚則教授<br>峯島宏次准教授</td>
+                    </tr>
+                    <tr>
+                        <td>2024/04 ~ now</td>
+                        <td>奈良先端科学技術大学院大学(NAIST) 先端科学技術研究科<br>情報科学領域 博士前期課程<br>ロボット対話知能連携研究室（基幹研究室：自然言語処理研究室）</td>
+                        <td>upcoming...</td>
+                        <td>吉野幸一郎教授<br>河野誠也助教</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-    </div>
-</div>
 
-<div class="section">
-    <h2 class="emoji">🏫 経歴</h2>
-    <table>
-        <thead>
-            <tr>
-                <th scope="col" class="period">期間</th>
-                <th scope="col">所属</th>
-                <th scope="col" class="degree">取得学位</th>
-                <th scope="col" class="supervisor">指導教官</th>
-
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>2019/04 ~ 2024/03</td>
-                <td>慶應義塾大学文学部人文社会学科 哲学系倫理学専攻</td>
-                <td>学士 (哲学)</td>
-                <td>柘植尚則教授<br>峯島宏次准教授</td>
-            </tr>
-            <tr>
-                <td>2024/04 ~ now</td>
-                <td>奈良先端科学技術大学院大学(NAIST) 先端科学技術研究科<br>情報科学領域 博士前期課程 <br>ロボット対話知能連携研究室（基幹研究室：自然言語処理研究室）</td>
-                <td>upcoming...</td>
-                <td>吉野幸一郎教授<br>河野誠也助教</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-<div class="section">
-    <h2 class="emoji">🔍 主な関心</h2>
-    <ul>
-        <li class="highlight">自然言語処理 / 計算言語学</li>
+    <div class="section">
+        <h2>🔍 主な関心</h2>
         <ul>
-            <li>言語モデルの語用論的推論能力</li>
-            <li>語用論的推論の計算論的な認知モデリング</li>
-            <li>心理測定理論に基づくベンチマークの評価と改善</li>
-            <li>手続き的意味をもつ談話関係</li>
-        </ul>
-    </ul>
-</div>
-
-<div class="section">
-    <h2 class="emoji">💻 経験のある技術</h2>
-    <ul>
-        <li class="highlight">Python</li>
-        <li class="highlight">TypeScript / JavaScript
-            <ul>
-                <li><strong>Next.js</strong></li>
-                <li><strong>React.js</strong></li>
-                <li>ReactNative</li>
-            </ul>
-        </li>
-        <li>Rust</li>
-        <li>Ruby on Rails</li>
-        <li>C++</li>
-        <li>その他技術
-            <ul>
-                <li>AWS</li>
-                <li>GCP</li>
-                <li>Docker</li>
-                <li>git(Github)</li>
-            </ul>
-        </li>
-    </ul>
-</div>
-
-<div class="section">
-    <h2 class="emoji">📕 Publications</h2>
-    <h4>査読あり</h4>
-    <ul>
-        <li><strong>Takuma Sato</strong>, Ai Kubota, Koji Mineshima "<strong>Is Partial Linguistic Information Sufficient for Discourse Connective Disambiguation? A Case Study of Concession</strong>, Vienna, ACL-SRW 2025 (to appear)</li>
-        <li>Hirohane Takagi, Shoji Moriya, <strong>Takuma Sato</strong>, Manabu Nagao, Keita Higuchi "<strong>A Framework for Efficient Development and Debugging of Role-playing Agents with Large Language Models</strong>", Cagliari/Italy, IUI 2025</li>
-        <li>高木洋羽, 守屋彰二, <strong>佐藤拓真</strong>, 永尾学, 樋口啓太, 「大規模言語モデルを用いたロールプレイエージェントの効率的な開発と動作検証のためのフレームワーク」, INTERACTION 2025 (2025.3).</li>
-        <li>Ai Kubota, <strong>Takuma Sato</strong>, Takayuki Amamoto, Ryota Akiyoshi, Koji Mineshima, "<strong>Annotation of Japanese Discourse Relations Focusing on Concessive Inferences</strong>", 20-25 May, Torino/Italy LREC-COLING 2024</li>
-    </ul>
-    <h4>査読なし</h4>
-    <ul>
-        <li><strong>佐藤拓真</strong>, 菅原朔「『評価』の評価: 言語モデル評価における構成概念妥当性について」, 2025年度人工知能学会全国大会(第39回) オーガナイズドセッション『データセットとベンチマークの技術的・社会的な視点』, 大阪府, 2025年5月 [口頭]</li>
-        <li><strong>佐藤拓真</strong>, 河野誠也, 吉野幸一郎「語用論理論を用いた文脈内学習の改善」, 情報処理学会第263回自然言語処理研究発表回, (2025年3月)</li>
-        <li><strong>佐藤拓真</strong>, 河野誠也, 吉野幸一郎「実際的な語用論的推論評価のためのデータセット構築に向けて」, 人工知能学会 言語・音声理解と対話処理研究会 (SIG-SLUD) 第15回対話システムシンポジウム（第102回SLUD研究会）(2024年11月)</li>
-        <li><strong>佐藤拓真</strong>, 窪田愛, 峯島宏次「<strong>BERTはどのように逆接の談話関係を判定しているか─Attention と品詞を手がかりとして─</strong>」, 言語処理学会第30回年次大会(NLP2024), 2024年3月11-15日@神戸</li>
-        <li><strong>佐藤拓真</strong>, 窪田愛, 峯島宏次「<strong>含意関係と感情極性は対立的談話関係を捉えられるか</strong>」, 言語処理学会第29回年次大会(NLP2023), 2023年3月13-17日@沖縄</li>
-        <li>窪田愛, <strong>佐藤拓真</strong>, 天本貴之, 秋吉亮太, 峯島宏次「<strong>逆接の推論関係に着目した日本語談話関係アノテーション</strong>」, 言語処理学会第29回年次大会(NLP2023), 2023年3月13-17日@沖縄<span class="award">《委員特別賞》</span></li>
-    </ul>
-</div>
-
-<!-- <div class="section">
-    <h2 class="emoji">📗 Publications（査読なし）</h2>
-    <ul>
-        <li><strong>佐藤拓真</strong>, 窪田愛, 峯島宏次「<strong>BERTはどのように逆接の談話関係を判定しているか─Attention と品詞を手がかりとして─</strong>」, 言語処理学会第30回年次大会(NLP2024), 2024年3月11-15日@神戸</li>
-        <li><strong>佐藤拓真</strong>, 窪田愛, 峯島宏次「<strong>含意関係と感情極性は対立的談話関係を捉えられるか</strong>」, 言語処理学会第29回年次大会(NLP2023), 2023年3月13-17日@沖縄</li>
-        <li>窪田愛, <strong>佐藤拓真</strong>, 天本貴之, 秋吉亮太, 峯島宏次「<strong>逆接の推論関係に着目した日本語談話関係アノテーション</strong>」, 言語処理学会第29回年次大会(NLP2023), 2023年3月13-17日@沖縄<span class="award">《委員特別賞》</span></li>
-    </ul>
-</div> -->
-
-<div class="section">
-    <h2 class="emoji">💰 研究助成</h2>
-    <div class="grant-item">
-        公益財団法人トヨタ財団研究助成 2024年度特定課題「先端技術と共創する新たな人間社会」 (個人研究)<br>
-        <strong>佐藤拓真「言語モデルの語用論的推論能力の向上とその活用」</strong><br>
-        📅 2025年5月~2027年4月 | 💰 助成金額 1,500,000円 | 📊 採択率 27.27%
-    </div>
-</div>
-
-<div class="section">
-    <h2 class="emoji">🏢 Work Experience</h2>
-    <h3 class="company">国立情報学研究所 (NII) : 2024年10月 ~ now</h3>
-    <div class="job">
-        <strong>Research Assistant</strong>
-        <ul>
-            <li>Supervisor: 菅原朔助教</li>
+            <li class="highlight">自然言語処理 / 計算言語学
+                <ul>
+                    <li>言語モデルの語用論的推論能力</li>
+                    <li>語用論的推論の計算論的な認知モデリング</li>
+                    <li>心理測定理論に基づくベンチマークの評価と改善</li>
+                    <li>手続き的意味をもつ談話関係</li>
+                </ul>
+            </li>
         </ul>
     </div>
 
-    <h3 class="company">株式会社Preferred Networks : 2024年10月 ~ 2024年12月</h3>
-    <div class="job">
-        <strong>Part-time Employee as Researcher</strong>
+    <div class="section">
+        <h2>💻 経験のある技術</h2>
         <ul>
-            <li>大規模言語モデルに基づく対話システムの研究</li>
-            <li>Supervisor: 樋口啓太博士</li>
+            <li class="highlight">Python</li>
+            <li class="highlight">TypeScript / JavaScript
+                <ul>
+                    <li><strong>Next.js</strong></li>
+                    <li><strong>React.js</strong></li>
+                    <li>ReactNative</li>
+                </ul>
+            </li>
+            <li>Rust</li>
+            <li>Ruby on Rails</li>
+            <li>C++</li>
+            <li>その他技術
+                <ul>
+                    <li>AWS</li>
+                    <li>GCP</li>
+                    <li>Docker</li>
+                    <li>git(Github)</li>
+                </ul>
+            </li>
         </ul>
     </div>
 
-    <h3 class="company">理化学研究所 ガーディアンロボットプロジェクト : 2024年10月</h3>
-    <div class="job">
-        <strong>Part-time Employee</strong>
-    </div>
-
-    <h3 class="company">株式会社Preferred Networks : 2024年8月 ~ 2024年9月</h3>
-    <div class="job">
-        <strong>Internship as Researcher</strong>
+    <div class="section">
+        <h2>📕 Publications</h2>
+        <h4>査読あり</h4>
         <ul>
-            <li>大規模言語モデルに基づく対話システムの研究</li>
-            <li>Supervisor: 樋口啓太博士</li>
+            <li><strong>Takuma Sato</strong>, Ai Kubota, Koji Mineshima "<strong>Is Partial Linguistic Information Sufficient for Discourse Connective Disambiguation? A Case Study of Concession</strong>, Vienna, ACL-SRW 2025 (to appear)</li>
+            <li>Hirohane Takagi, Shoji Moriya, <strong>Takuma Sato</strong>, Manabu Nagao, Keita Higuchi "<strong>A Framework for Efficient Development and Debugging of Role-playing Agents with Large Language Models</strong>", Cagliari/Italy, IUI 2025</li>
+            <li>高木洋羽, 守屋彰二, <strong>佐藤拓真</strong>, 永尾学, 樋口啓太, 「大規模言語モデルを用いたロールプレイエージェントの効率的な開発と動作検証のためのフレームワーク」, INTERACTION 2025 (2025.3).</li>
+            <li>Ai Kubota, <strong>Takuma Sato</strong>, Takayuki Amamoto, Ryota Akiyoshi, Koji Mineshima, "<strong>Annotation of Japanese Discourse Relations Focusing on Concessive Inferences</strong>", 20-25 May, Torino/Italy LREC-COLING 2024</li>
+        </ul>
+        <h4>査読なし</h4>
+        <ul>
+            <li><strong>佐藤拓真</strong>, 菅原朔「『評価』の評価: 言語モデル評価における構成概念妥当性について」, 2025年度人工知能学会全国大会(第39回) オーガナイズドセッション『データセットとベンチマークの技術的・社会的な視点』, 大阪府, 2025年5月 [口頭]</li>
+            <li><strong>佐藤拓真</strong>, 河野誠也, 吉野幸一郎「語用論理論を用いた文脈内学習の改善」, 情報処理学会第263回自然言語処理研究発表回, (2025年3月)</li>
+            <li><strong>佐藤拓真</strong>, 河野誠也, 吉野幸一郎「実際的な語用論的推論評価のためのデータセット構築に向けて」, 人工知能学会 言語・音声理解と対話処理研究会 (SIG-SLUD) 第15回対話システムシンポジウム（第102回SLUD研究会）(2024年11月)</li>
+            <li><strong>佐藤拓真</strong>, 窪田愛, 峯島宏次「<strong>BERTはどのように逆接の談話関係を判定しているか─Attention と品詞を手がかりとして─</strong>」, 言語処理学会第30回年次大会(NLP2024), 2024年3月11-15日@神戸</li>
+            <li><strong>佐藤拓真</strong>, 窪田愛, 峯島宏次「<strong>含意関係と感情極性は対立的談話関係を捉えられるか</strong>」, 言語処理学会第29回年次大会(NLP2023), 2023年3月13-17日@沖縄</li>
+            <li>窪田愛, <strong>佐藤拓真</strong>, 天本貴之, 秋吉亮太, 峯島宏次「<strong>逆接の推論関係に着目した日本語談話関係アノテーション</strong>」, 言語処理学会第29回年次大会(NLP2023), 2023年3月13-17日@沖縄<span class="award">《委員特別賞》</span></li>
         </ul>
     </div>
 
-    <h3 class="company">株式会社LabBase : 2023年10月 ~ 2024年7月</h3>
-    <div class="job">
-        <strong>Internship as Software Engineer</strong>
-        <ul>
-            <li>Webサービスのバックエンド開発</li>
+    <div class="section">
+        <h2>💰 研究助成</h2>
+        <div class="grant-item">
+            公益財団法人トヨタ財団研究助成 2024年度特定課題「先端技術と共創する新たな人間社会」 (個人研究)<br>
+            <strong>佐藤拓真「言語モデルの語用論的推論能力の向上とその活用」</strong><br>
+            📅 2025年5月~2027年4月 | 💰 助成金額 1,500,000円 | 📊 採択率 27.27%
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🏢 Work Experience</h2>
+        <h3 class="company">国立情報学研究所 (NII) : 2024年10月 ~ now</h3>
+        <div class="job">
+            <strong>Research Assistant</strong>
             <ul>
-                <li class="tech">Rust</li>
+                <li>Supervisor: 菅原朔助教</li>
             </ul>
+        </div>
+
+        <h3 class="company">株式会社Preferred Networks : 2024年10月 ~ 2024年12月</h3>
+        <div class="job">
+            <strong>Part-time Employee as Researcher</strong>
+            <ul>
+                <li>大規模言語モデルに基づく対話システムの研究</li>
+                <li>Supervisor: 樋口啓太博士</li>
+            </ul>
+        </div>
+
+        <h3 class="company">理化学研究所 ガーディアンロボットプロジェクト : 2024年10月</h3>
+        <div class="job">
+            <strong>Part-time Employee</strong>
+        </div>
+
+        <h3 class="company">株式会社Preferred Networks : 2024年8月 ~ 2024年9月</h3>
+        <div class="job">
+            <strong>Internship as Researcher</strong>
+            <ul>
+                <li>大規模言語モデルに基づく対話システムの研究</li>
+                <li>Supervisor: 樋口啓太博士</li>
+            </ul>
+        </div>
+
+        <h3 class="company">株式会社LabBase : 2023年10月 ~ 2024年7月</h3>
+        <div class="job">
+            <strong>Internship as Software Engineer</strong>
+            <ul>
+                <li>Webサービスのバックエンド開発</li>
+                <li>使用技術: Rust</li>
+            </ul>
+        </div>
+
+        <h3 class="company">Ann株式会社 : 2021年9月 ~ 2023年3月</h3>
+        <div class="job">
+            <strong>Internship as Web Engineer and ML Engineer</strong>
+            <ul>
+                <li>自然言語処理 R&amp;D</li>
+                <li>Webフロントエンド開発 (TypeScript / React.js / Next.js / React Native)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🎖️ 資格等</h2>
+        <div class="cert-item highlight">TOEIC Listening &amp; Reading Test 920 (2024/12)</div>
+        <div class="cert-item highlight">応用情報技術者試験(AP) 合格 (2022/10)</div>
+        <div class="cert-item">AtCoder茶色</div>
+    </div>
+
+    <div class="section">
+        <h2>🙌 その他</h2>
+        <ul>
+            <li>音楽制作
+                <ul>
+                    <li>Synthesizer</li>
+                    <li>Guitar</li>
+                    <li>Piano</li>
+                </ul>
+            </li>
+            <li>映像制作
+                <ul>
+                    <li>Adobe AfterEffects</li>
+                </ul>
+            </li>
+            <li>テニス</li>
         </ul>
     </div>
-    
-    <h3 class="company">Ann株式会社 : 2021年9月 ~ 2023年3月</h3>
-    <div class="job">
-    <strong>Internship as Web Engineer and ML Engineer</strong>
-        <ul>
-            <li>自然言語処理 R&D</li>
-            <ul>
-                <li class="tech">Python</li>
-            </ul>
-            <li>Webフロントエンド開発</li>
-            <ul>
-                <li>TypeScript</li>
-                <li>React.js</li>
-                <li>Next.js</li>
-                <li>React Native</li>
-            </ul>
-        </ul>
+
+    <div class="footer">
+        Thanks for visiting my homepage! | Guestbook準備中 | Mail me anytime ✉
     </div>
 </div>
-
-<div class="section">
-    <h2 class="emoji">🎖️ 資格等</h2>
-    <div class="cert-item highlight">TOEIC Listening & Reading Test 920 (2024/12)</div>
-    <div class="cert-item highlight">応用情報技術者試験(AP) 合格 (2022/10)</div>
-    <div class="cert-item">AtCoder茶色</div>
-</div>
-
-<div class="section">
-    <h2 class="emoji">🙌 その他</h2>
-    <ul>
-        <li>音楽制作
-            <ul>
-                <li>Synthesizer</li>
-                <li>Guitar</li>
-                <li>Piano</li>
-            </ul>
-        </li>
-        <li>映像制作
-            <ul>
-                <li>Adobe AfterEffects</li>
-            </ul>
-        </li>
-        <li>テニス</li>
-    </ul>
-</div>
-<script type="module" src="three-background.js"></script>
-<script src="cursor-trail.js" defer></script>
 </body>
 </html>

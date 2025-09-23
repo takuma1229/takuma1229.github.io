@@ -4,19 +4,25 @@ import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 
 const canvas = document.getElementById('hero-canvas');
-const container = document.querySelector('.hero');
 
-if (!canvas || !container) {
+if (!canvas) {
   console.warn('Hero canvas element not found; skipping Three.js background.');
 } else {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  const getViewportSize = () => ({
+    width: Math.max(window.innerWidth || 1, 1),
+    height: Math.max(window.innerHeight || 1, 1),
+  });
+
+  let { width: viewportWidth, height: viewportHeight } = getViewportSize();
 
   const scene = new THREE.Scene();
   scene.fog = new THREE.FogExp2(0x020617, 0.035);
 
   const camera = new THREE.PerspectiveCamera(
     40,
-    container.clientWidth / container.clientHeight,
+    viewportWidth / viewportHeight,
     0.1,
     100,
   );
@@ -28,7 +34,7 @@ if (!canvas || !container) {
     alpha: true,
   });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  renderer.setSize(container.clientWidth, container.clientHeight);
+  renderer.setSize(viewportWidth, viewportHeight);
   renderer.setClearColor(0x000000, 0);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -37,7 +43,7 @@ if (!canvas || !container) {
   const composer = new EffectComposer(renderer);
   const renderPass = new RenderPass(scene, camera);
   const bloomPass = new UnrealBloomPass(
-    new THREE.Vector2(container.clientWidth, container.clientHeight),
+    new THREE.Vector2(viewportWidth, viewportHeight),
     1.1,
     0.4,
     0.88,
@@ -311,10 +317,24 @@ if (!canvas || !container) {
 
   let pointerActive = false;
 
+  const clamp01 = (value) => Math.min(Math.max(value, 0), 1);
+
+  const resetPointerTargets = () => {
+    mouseTarget.set(0, 0);
+    pointerActive = false;
+    cursorTarget.set(0, 0.8, 2.2);
+  };
+
   const updateMouse = (event) => {
-    const rect = container.getBoundingClientRect();
-    const x = (event.clientX - rect.left) / rect.width;
-    const y = (event.clientY - rect.top) / rect.height;
+    if (event.pointerType && event.pointerType !== 'mouse') {
+      return;
+    }
+
+    const width = viewportWidth || window.innerWidth || 1;
+    const height = viewportHeight || window.innerHeight || 1;
+    const x = clamp01(event.clientX / width);
+    const y = clamp01(event.clientY / height);
+
     mouseTarget.x = (x - 0.5) * Math.PI * 0.12;
     mouseTarget.y = (y - 0.5) * Math.PI * 0.08;
     pointerNDC.set(x * 2 - 1, -(y * 2 - 1));
@@ -328,12 +348,19 @@ if (!canvas || !container) {
     pointerActive = true;
   };
 
-  container.addEventListener('pointermove', updateMouse);
-  container.addEventListener('pointerleave', () => {
-    mouseTarget.set(0, 0);
-    pointerActive = false;
-    cursorTarget.set(0, 0.8, 2.2);
-  });
+  const handlePointerOut = (event) => {
+    if (event.pointerType && event.pointerType !== 'mouse') {
+      return;
+    }
+    if (event.relatedTarget) {
+      return;
+    }
+    resetPointerTargets();
+  };
+
+  window.addEventListener('pointermove', updateMouse);
+  window.addEventListener('pointerdown', updateMouse);
+  window.addEventListener('pointerout', handlePointerOut);
 
   let lastTime = 0;
   let animationFrameId;
@@ -483,12 +510,12 @@ if (!canvas || !container) {
   };
 
   const handleResize = () => {
-    const { clientWidth, clientHeight } = container;
-    camera.aspect = clientWidth / clientHeight;
+    ({ width: viewportWidth, height: viewportHeight } = getViewportSize());
+    camera.aspect = viewportWidth / viewportHeight;
     camera.updateProjectionMatrix();
-    renderer.setSize(clientWidth, clientHeight);
-    composer.setSize(clientWidth, clientHeight);
-    bloomPass.setSize(clientWidth, clientHeight);
+    renderer.setSize(viewportWidth, viewportHeight);
+    composer.setSize(viewportWidth, viewportHeight);
+    bloomPass.setSize(viewportWidth, viewportHeight);
   };
 
   window.addEventListener('resize', handleResize);
@@ -505,7 +532,7 @@ if (!canvas || !container) {
     shardMaterial.opacity = isReduced ? 0.18 : shardMaterial.opacity;
 
     if (isReduced) {
-      pointerActive = false;
+      resetPointerTargets();
       cursorGlowMaterial.opacity = 0;
       cursorHaloMaterial.opacity = 0;
       cursorLinkMaterial.opacity = 0;
