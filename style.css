@@ -324,6 +324,10 @@ body {
   padding-left: 18px;
 }
 
+.section ul:not(.bbs-list) li {
+  margin-block: 12px;
+}
+
 .highlight {
   color: #a35237;
 }
